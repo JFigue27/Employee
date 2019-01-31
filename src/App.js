@@ -1,22 +1,38 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
-import EmployeeForm from "./forms/components/employee-form";
+import EmployeeReadList from "./pages/containers/employee-read-list";
+import ModalContainer from "./widgets/containers/modal";
+import Modal from "./widgets/components/modal-employee-form";
+import AppLayout from "./pages/components/App-Layout";
 import "./App.css";
 
 class App extends Component {
+  state = {
+    modalVisible: false
+  };
+
+  handleOpenModal = event => {
+    this.setState({
+      modalVisible: true
+    });
+  };
+  handleCloseModal = event => {
+    this.setState({
+      modalVisible: false
+    });
+  };
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <EmployeeForm />
-          <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-            Learn React
-          </a>
-        </header>
+        <AppLayout />
+        <EmployeeReadList handleClick={this.handleOpenModal} />
+        {this.state.modalVisible && (
+          <ModalContainer>
+            <Modal handleClick={this.handleCloseModal}>
+              <h1>Esto es un portal</h1>
+            </Modal>
+          </ModalContainer>
+        )}
       </div>
     );
   }

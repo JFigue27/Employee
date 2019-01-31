@@ -52,28 +52,7 @@ class EmployeeForm extends Component {
     event.preventDefault();
   };
 
-  componentDidMount = () => {
-    /* fetch("https://localhost:5001/api/employee/")
-      .then(r => r.json())
-      .then(response => {
-        console.log(response);
-        this.setState({ items: response });
-      }); */
-    axios
-      .get("https://localhost:5001/api/employee")
-      .then(resp => {
-        console.log(resp.data);
-        console.log(resp.status);
-        console.log(resp.statusText);
-        this.setState({ employees: resp.data });
-      })
-      .catch(function(error) {
-        // Handle Error
-        console.log(error);
-      });
-  };
   render() {
-    const { employees } = this.state;
     return (
       <div>
         <h3>Employee Info</h3>
@@ -96,11 +75,6 @@ class EmployeeForm extends Component {
           <br />
           <button value="submit">submit</button>
         </form>
-        {employees.map(employee => (
-          <li key={employee.id}>
-            {employee.name} | {employee.employeeNumber}
-          </li>
-        ))}
       </div>
     );
   }

@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
+import AppLayout from "./pages/components/App-Layout";
 /* import Employee from "../src/forms/components/employee-form"; */
 import * as serviceWorker from "./serviceWorker";
 
