@@ -23,7 +23,7 @@ class EmployeeForm extends Component {
   };
 
   handleSubmit = event => {
-    alert("A name was submit: " + this.state.name);
+    // alert("A name was submit: " + this.state.name);
     // Create a new user....
     axios
       .post("https://localhost:5001/api/employee", {

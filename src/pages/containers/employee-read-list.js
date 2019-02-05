@@ -6,12 +6,13 @@ class EmployeeReadList extends Component {
     employees: []
   };
 
-  // handleClick = event => {
-  //   alert("its Work");
-  //   this.setState({
-
-  //   })
-  // };
+  handleUpdateClick = event => {
+    debugger;
+    alert("its Work");
+    // this.setState({});
+    // this.props.handleOpenUpdateClick(this.props);
+    // console.log(this.props.handleOpenUpdateClick(this.props));
+  };
 
   componentDidMount = () => {
     /* fetch("https://localhost:5001/api/employee/")
@@ -23,9 +24,9 @@ class EmployeeReadList extends Component {
     axios
       .get("https://localhost:5001/api/employee")
       .then(resp => {
-        console.log(resp.data);
-        console.log(resp.status);
-        console.log(resp.statusText);
+        // console.log(resp.data);
+        // console.log(resp.status);
+        // console.log(resp.statusText);
         this.setState({ employees: resp.data });
       })
       .catch(function(error) {
@@ -42,7 +43,12 @@ class EmployeeReadList extends Component {
         <h3>Employee List...</h3>
         {employees.map(employee => (
           <li key={employee.id}>
-            {employee.id} | {employee.name} | {employee.employeeNumber}
+            {employee.id} | {employee.name} | {employee.employeeNumber} --
+            <button onClick={this.props.handleUpdateClick} key={employee.id}>
+              Update
+            </button>
+            --
+            <button>Delete</button>
           </li>
         ))}
       </div>
